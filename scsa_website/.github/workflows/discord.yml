@@ -1,0 +1,37 @@
+name: Discord Notifications
+
+on:
+  pull_request:
+    types: [opened, reopened, closed]   # closed includes merged
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build message for PRs
+        if: github.event_name == 'pull_request'
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_NUM="${{ github.event.pull_request.number }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          PR_STATE="${{ github.event.pull_request.merged && 'merged' || github.event.action }}"
+          echo "CONTENT=**PR #$PR_NUM ${PR_STATE}** — ${PR_TITLE}\n${PR_URL}" >> $GITHUB_ENV
+
+      - name: Build message for Releases
+        if: github.event_name == 'release'
+        run: |
+          REL_NAME="${{ github.event.release.name }}"
+          REL_URL="${{ github.event.release.html_url }}"
+          echo "CONTENT=**New release:** ${REL_NAME}\n${REL_URL}" >> $GITHUB_ENV
+
+      - name: Send to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          CONTENT: ${{ env.CONTENT }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "$(jq -nc --arg c "$CONTENT" '{content:$c}')" \
+               "$DISCORD_WEBHOOK"
