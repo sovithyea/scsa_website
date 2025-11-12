@@ -44,15 +44,15 @@
 
 /* hero: group photo styling */
 .hero-photo img {
-  width: min(100%, 1100px);        /* cap image width */
-  border-radius: 14px;             /* soft corners */
+  width: min(100%, 1100px); /* cap image width */
+  border-radius: 14px; /* soft corners */
   box-shadow: 0 12px 40px rgba(0,0,0,.18); /* soft drop shadow */
 }
 
 /* hero: radial glow behind photo */
 .hero-glow {
   position: absolute;
-  inset: auto 0 -32px 0;           /* sit just under image */
+  inset: auto 0 -32px 0; /* sit just under image */
   height: 160px;
   background: radial-gradient(ellipse at center,
               rgba(29,78,216,.25) 0%, rgba(29,78,216,0) 70%);
@@ -62,16 +62,16 @@
 
 /* bottom-part: light section after hero */
 .bottom-part {
-  background: #ffffff;             /* plain white */
+  background: #ffffff; /* plain white */
 }
 
 /* utils: kill any legacy dark theming quickly */
 [data-theme], [data-theme="dark"], body[data-theme="dark"] {
-  background: #ffffff !important;  /* force white bg */
-  color: #0f172a !important;       /* force dark text */
+  background: #ffffff !important; /* force white bg */
+  color: #0f172a !important; /* force dark text */
 }
 
 /* Footer hardening: make sure nothing fights centering */
 footer img { margin-left: auto; margin-right: auto; } /* center logo as block */
-footer { text-align: center; }                          /* center text fallback */
+footer { text-align: center; } /* center text fallback */
 

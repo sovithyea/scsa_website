@@ -34,7 +34,7 @@ export default function Footer() {
             color="text.secondary"
             align="center"
           >
-            © 2026 Swinburne Cambodian Student Association {/* fixed year per your note */}
+            © 2026 Swinburne Cambodian Student Association 
           </Typography>
         </Stack>
       </Container>

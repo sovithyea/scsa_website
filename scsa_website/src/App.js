@@ -18,20 +18,20 @@ const theme = createTheme({ palette: { mode: "light" } });
 export default function App() {
   useEffect(() => {
     // Ensure no leftover theme flags from old build
-    localStorage.removeItem("theme");          // drop persisted theme key
+    localStorage.removeItem("theme"); // drop persisted theme key
     document.body.removeAttribute("data-theme"); // remove data-theme="dark"
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* normalize + light colors */}
-      <Header />      {/* top navigation */}
-      <Routes>        {/* page routes */}
+      <Header /> {/* top navigation */}
+      <Routes> {/* page routes */}
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<About />} />
         <Route path="/events" element={<Events />} />
       </Routes>
-      <Footer />      {/* footer */}
+      <Footer /> {/* footer */}
     </ThemeProvider>
   );
 }
