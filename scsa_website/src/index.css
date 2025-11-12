@@ -1,15 +1,29 @@
-/*styles the apps attributes*/
+/* base: full-height layout */
+html, body, #root { height: 100%; }
 
+/* base: light background + default text */
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-    text-align: center;
+/* base: app font stack */
+body, button, input, textarea {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 
+/* base: links use brand-ish blue */
+a { color: #1d4ed8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* base: images are responsive */
+img { max-width: 100%; height: auto; display: block; }
+
+/* base: remove leftover dark attribute if it ever gets added */
+[data-theme="dark"], body[data-theme="dark"] {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
