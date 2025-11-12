@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-// assets (use your src/Assets paths)
+// assets 
 import bannerLight from "../Assets/scsa_banner_no_bg.png";
 
 export default function Header() {
