@@ -1,43 +1,159 @@
-// Light footer (centered logo + centered copyright)
-import Box from "@mui/material/Box";
+// Clean SCSA footer bar (white, with social links)
+
+import React from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import mark from "../Assets/scsa_logo_no_bg.png";
+import IconButton from "@mui/material/IconButton";
+
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import MusicNoteIcon from "@mui/icons-material/MusicNote"; // TikTok placeholder
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import LinkIcon from "@mui/icons-material/Link"; // Linktree placeholder
+
+import scsaLogo from "../Assets/scsa_logo_no_bg.png"; // adjust if needed
+
+// TODO: replace these with your real URLs
+const socialLinks = {
+  linkedin: "https://www.linkedin.com/company/scsa-swinburne/",   
+  tiktok: "https://www.tiktok.com/@scsa_swinburne",         
+  instagram: "https://www.instagram.com/scsa_swinburne/",
+  youtube: "https://www.youtube.com/@swinburne_cambodian_sa",
+  linktree: "https://linktr.ee/scsa_swinburne",
+};
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <Box
+    <AppBar
       component="footer"
+      position="static"
+      elevation={0}
       sx={{
-        mt: 8, // space above footer
-        backgroundColor: "#fff", // light background
-        borderTop: "1px solid rgba(0,0,0,.08)", // subtle top border
+        mt: 8,
+        backgroundColor: "#ffffff",
+        color: "#111111",
+        borderTop: "1px solid rgba(0,0,0,0.08)",
       }}
     >
-      <Container maxWidth="md" sx={{ py: 4 }}> {/* centered content wrapper */}
-        <Stack alignItems="center" spacing={1.5}> {/* vertical center stack */}
+      <Toolbar disableGutters>
+        <Container
+          maxWidth="lg"
+          sx={{
+            py: 2,
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: { xs: 1.5, sm: 2 },
+          }}
+        >
+          {/* Left: SCSA logo + name */}
           <Box
-            component="img"
-            src={mark}
-            alt="SCSA mark"
             sx={{
-              height: { xs: 40, sm: 52 }, // responsive logo height
-              width: "auto", // keep aspect
-              display: "block", // prevent inline gap
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
             }}
-          />
-          <Divider sx={{ width: "100%", my: 0.5 }} /> {/* thin divider */}
+          >
+            <img
+              src={scsaLogo}
+              alt="SCSA logo"
+              style={{ height: 32, display: "block" }}
+            />
+            <Typography
+              variant="subtitle2"
+              sx={{
+                fontWeight: 600,
+                letterSpacing: ".12em",
+                textTransform: "uppercase",
+                fontSize: "0.72rem",
+              }}
+            >
+              Swinburne Cambodian Student Association
+            </Typography>
+          </Box>
+
+          {/* Middle: copyright */}
           <Typography
             variant="body2"
-            color="text.secondary"
-            align="center"
+            sx={{
+              textAlign: "center",
+              flexShrink: 0,
+            }}
           >
-            © 2026 Swinburne Cambodian Student Association 
+            Copyright © {year} SCSA Swinburne. All rights reserved.
           </Typography>
-        </Stack>
-      </Container>
-    </Box>
+
+          {/* Right: socials */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            {/* LinkedIn */}
+            <IconButton
+              size="small"
+              color="inherit"
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedInIcon fontSize="small" />
+            </IconButton>
+
+            {/* TikTok (MusicNote icon as placeholder) */}
+            <IconButton
+              size="small"
+              color="inherit"
+              href={socialLinks.tiktok}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MusicNoteIcon fontSize="small" />
+            </IconButton>
+
+            {/* Instagram */}
+            <IconButton
+              size="small"
+              color="inherit"
+              href={socialLinks.instagram}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <InstagramIcon fontSize="small" />
+            </IconButton>
+
+            {/* YouTube */}
+            <IconButton
+              size="small"
+              color="inherit"
+              href={socialLinks.youtube}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <YouTubeIcon fontSize="small" />
+            </IconButton>
+
+            {/* Linktree (generic link icon) */}
+            <IconButton
+              size="small"
+              color="inherit"
+              href={socialLinks.linktree}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkIcon fontSize="small" />
+            </IconButton>
+          </Box>
+        </Container>
+      </Toolbar>
+    </AppBar>
   );
 }
