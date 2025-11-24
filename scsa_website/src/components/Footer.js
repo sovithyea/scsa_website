@@ -16,7 +16,7 @@ import LinkIcon from "@mui/icons-material/Link"; // Linktree placeholder
 
 import scsaLogo from "../Assets/scsa_logo_no_bg.png"; // adjust if needed
 
-// TODO: replace these with your real URLs
+// Social media links
 const socialLinks = {
   linkedin: "https://www.linkedin.com/company/scsa-swinburne/",   
   tiktok: "https://www.tiktok.com/@scsa_swinburne",         
@@ -26,7 +26,6 @@ const socialLinks = {
 };
 
 export default function Footer() {
-  const year = new Date().getFullYear();
 
   return (
     <AppBar
@@ -86,7 +85,7 @@ export default function Footer() {
               flexShrink: 0,
             }}
           >
-            Copyright © {year} SCSA Swinburne. All rights reserved.
+            Copyright © 2026 SCSA Swinburne. All rights reserved.
           </Typography>
 
           {/* Right: socials */}
@@ -141,7 +140,7 @@ export default function Footer() {
               <YouTubeIcon fontSize="small" />
             </IconButton>
 
-            {/* Linktree (generic link icon) */}
+            {/* Linktree */}
             <IconButton
               size="small"
               color="inherit"
