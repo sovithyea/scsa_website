@@ -1,4 +1,3 @@
-// App shell (light-only) + dynamic <title>
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -11,30 +10,28 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Events from "./pages/Events";
 
-// light theme
 const theme = createTheme({ palette: { mode: "light" } });
 
-// updates document.title when route changes
 function RouteTitle() {
-  const { pathname } = useLocation(); // current path
+  const { pathname } = useLocation();
   useEffect(() => {
-    const map = { "/": "Home", "/aboutus": "About Us", "/events": "Events" }; // page names
+    const map = { "/": "Home", "/aboutus": "About Us", "/events": "Events" };
     const page = map[pathname] ?? "SCSA";
-    document.title = `${page} | SCSA`; // e.g., "About Us | SCSA"
+    document.title = `${page} | SCSA`;
   }, [pathname]);
   return null;
 }
 
 export default function App() {
   useEffect(() => {
-    localStorage.removeItem("theme"); // clear legacy theme
+    localStorage.removeItem("theme");
     document.body.removeAttribute("data-theme");
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <RouteTitle /> {/* dynamic title */}
+      <RouteTitle />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

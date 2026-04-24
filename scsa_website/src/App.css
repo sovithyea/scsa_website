@@ -6,7 +6,7 @@
   position: relative;             /* allow glow overlay positioning */
   padding: 48px 16px 24px;        /* comfy vertical rhythm */
   background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%); /* light gradient */
-  color: #0f172a;                 /* dark text on light bg */
+  color: #0f172a; /* dark text on light bg */
 }
 
 /* hero: small welcome label */
